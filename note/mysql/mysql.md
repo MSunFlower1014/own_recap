@@ -16,6 +16,10 @@ undolog回滚日志
 统一性
 持久性 数据落盘，binlog
 
+## 数据隔离实现MVCC
+
+数据库维护所有事物id数组，维护数据多版本，通过undolog和redolog进行重放，事务中单条数据维护多版本，根据隔离级别展示对应版本
+
 ## 索引结构
 
 索引 b➕树，只有叶子结点保存所有数据，其中主键索引叶子保存整行数据，非主键保存索引与主键id，叶子结点相连
@@ -40,5 +44,20 @@ DML 表锁，alter table add/drop
 热点数据更新锁等待导致性能问题：拆分，多字段合一
 
 清理表空洞 使用 alter table A engine=InnoDB 命令来重建表 
+
+explain：
+type-访问类型，性能从优到差为  
+system(系统表或很小的临时表)->const(主键或唯一索引进行等值比较)  
+->eq_ref(多表联合使用了逐渐或唯一索引)->ref(使用非唯一索引)->range(范围扫描)->index(全索引扫描)->all(全表扫描)
+
+possible_keys-可能用到的索引  
+key-实际用到的索引  
+key_len-索引长度，一般越短性能越好  
+rows-预估扫描行数  
+filtered-返回结果占读取行数的百分比  
+Extra-额外信息，Using filesort: 说明 MySQL 无法利用索引进行排序，使用了外部排序算法，性能开销很大。  
+Using temporary: 建立了临时表来保存中间结果，常出现在 GROUP BY 或 ORDER BY 中，非常耗性能。  
+Using index: 覆盖索引，不需要回表查询。  
+
 
 
