@@ -5,6 +5,13 @@
 String\List\Set\SortSet\Hash  
 SortSet底层由跳表实现(数量小于512且数据为数字时为有序数组)
 
+## 应用
+
+布隆过滤器：过滤无效请求  
+分布式锁：setnx key value time  
+缓存：set key value time  
+排行榜：zset key value
+
 ## redis为什么快
 
 1.内存操作  
