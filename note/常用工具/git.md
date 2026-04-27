@@ -29,3 +29,11 @@ git config --global user.email test@runoob.com
 ```shell
 git remote set-url origin git@github.com:仓库名.git
 ```
+
+## 删除误提交的文件
+
+将文件从git跟踪列表中删除，不会删除本地文件
+
+```shell
+git rm -r --cached .idea
+```
