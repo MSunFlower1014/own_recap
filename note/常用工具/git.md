@@ -21,3 +21,11 @@ git stash - 临时保存工作进度
 git config --global user.name "runoob"
 git config --global user.email test@runoob.com
 ```
+
+## 网络问题
+
+优先使用ssh协议
+
+```shell
+git remote set-url origin git@github.com:仓库名.git
+```
