@@ -5,6 +5,14 @@
 异步，非阻塞，多路复用，nio，减少上下文切换  
 一个master进程和多个worker进程，worker进程通过epoll多路复用，一个进程可以处理上万个连接
 
+## 常用命令
+
+nginx -s quit 优雅停止，等待连接请求结束  
+nginx -s reload 热加载  
+nginx -c /path/nginx.conf 启动并指定配置文件  
+nginx -t 检查配置文件语法是否有误  
+自动化脚本推荐：nginx -t && nginx -s reload 避免配置文件错误导致网管宕机
+
 ## 配置
 
 正向代理和反向代理？  
