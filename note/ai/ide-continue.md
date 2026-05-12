@@ -3,6 +3,7 @@
 ## 密钥配置
 
 申请gemini：https://aistudio.google.com/api-keys
+不好用，报错日志也没有
 
 ```json
 {
